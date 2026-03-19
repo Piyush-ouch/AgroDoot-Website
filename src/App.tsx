@@ -57,10 +57,10 @@ function App() {
           </div>
           
           <div className="hidden md:flex items-center bg-white/5 border border-white/10 rounded-full px-2 py-1 shadow-sm backdrop-blur-md">
-            <a href="#" className="px-6 py-2 text-sm font-medium bg-[#22c55e] text-[#021808] rounded-full">Home</a>
-            <a href="#problem" className="px-6 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors hover:bg-white/10 rounded-full">Problem</a>
-            <a href="#solution" className="px-6 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors hover:bg-white/10 rounded-full">Solution</a>
-            <a href="#features" className="px-6 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors hover:bg-white/10 rounded-full">Features</a>
+            <a href="#" className="px-6 py-2 text-sm font-medium bg-[#22c55e] text-[#021808] rounded-full">होम</a>
+            <a href="#problem" className="px-6 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors hover:bg-white/10 rounded-full">समस्याएं</a>
+            <a href="#solution" className="px-6 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors hover:bg-white/10 rounded-full">समाधान</a>
+            <a href="#features" className="px-6 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors hover:bg-white/10 rounded-full">फीचर्स</a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -87,16 +87,16 @@ function App() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#22c55e]/10 border border-[#22c55e]/30 text-sm font-medium mb-8 shadow-sm backdrop-blur-md text-[#4ade80]">
-              <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" /> Next-Gen Farming Wellness
+              <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" /> स्मार्ट खेती की शुरुआत
             </div>
             <h1 className="text-5xl md:text-[5.5rem] font-medium leading-[1.05] tracking-tight mb-8 max-w-5xl mx-auto text-white">
-              Bring Fresh Growth <br /> To <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ade80] to-[#22c55e]">Agriculture.</span>
+              AgroDoot – अब खेती <br /> होगी <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ade80] to-[#22c55e]">स्मार्ट!</span>
             </h1>
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Experience the ultimate farming journey with precise automated irrigation, AI pest predictions, and real-time market insights.
+              AgroDoot आपको देता है स्मार्ट सिंचाई, कीट पूर्वानुमान और बाज़ार की जानकारी - सब कुछ एक ही जगह पर।
             </p>
             <button className="bg-[#22c55e] hover:bg-[#16a34a] text-[#021808] px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 mx-auto shadow-[0_0_30px_rgba(34,197,94,0.3)] hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] hover:-translate-y-1">
-              Get Started <ArrowRight className="w-5 h-5" />
+              आज ही अपनाएं <ArrowRight className="w-5 h-5" />
             </button>
           </motion.div>
         </section>
@@ -117,9 +117,9 @@ function App() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#021808] via-transparent to-transparent opacity-90" />
             <div className="absolute inset-0 bg-green-500/10 mix-blend-overlay" />
             <div className="absolute bottom-8 left-8 right-8 flex flex-col md:flex-row justify-between items-start md:items-end text-white gap-6">
-              <h2 className="text-3xl md:text-5xl font-medium max-w-xl leading-tight text-white drop-shadow-lg">The Journey to Perfection in Farming.</h2>
+              <h2 className="text-3xl md:text-5xl font-medium max-w-xl leading-tight text-white drop-shadow-lg">स्मार्ट खेती का सफर।</h2>
               <div className="flex bg-white/10 backdrop-blur-md px-6 py-4 rounded-full text-sm font-medium border border-white/20 items-center gap-2 hover:bg-white/20 transition-colors cursor-pointer">
-                Download AgroDoot App <ArrowRight className="w-4 h-4 ml-2" />
+                AgroDoot ऐप डाउनलोड करें <ArrowRight className="w-4 h-4 ml-2" />
               </div>
             </div>
           </motion.div>
@@ -130,10 +130,10 @@ function App() {
           <div className="max-w-[1400px] mx-auto px-6">
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-12 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10 shadow-2xl">
               {[
-                { stat: "10+", label: "Smart Features" },
-                { stat: "40%", label: "Water Saved" },
-                { stat: "98%", label: "Prediction Accuracy" },
-                { stat: "24/7", label: "Automated Care" },
+                { stat: "10+", label: "स्मार्ट फीचर्स" },
+                { stat: "40%", label: "पानी की बचत" },
+                { stat: "98%", label: "सटीक भविष्यवाणी" },
+                { stat: "24/7", label: "ऑटोमेशन" },
               ].map((s, i) => (
                 <FadeIn key={i} delay={i * 0.1}>
                   <div className="text-center md:text-left md:pl-8 first:pl-0">
@@ -151,24 +151,24 @@ function App() {
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <FadeIn direction="right">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 font-medium text-sm mb-6">
-                The Challenge
+                वर्तमान चुनौतियां
               </div>
               <div className="flex flex-wrap gap-4 mt-8 opacity-80">
-                <span className="text-sm font-medium border border-white/20 bg-white/5 rounded-full px-5 py-2">Water Waste</span>
-                <span className="text-sm font-medium border border-white/20 bg-white/5 rounded-full px-5 py-2">Unpredictable Pests</span>
-                <span className="text-sm font-medium border border-white/20 bg-white/5 rounded-full px-5 py-2">Market Guesswork</span>
+                <span className="text-sm font-medium border border-white/20 bg-white/5 rounded-full px-5 py-2">पानी की बर्बादी</span>
+                <span className="text-sm font-medium border border-white/20 bg-white/5 rounded-full px-5 py-2">बिजली का खर्च</span>
+                <span className="text-sm font-medium border border-white/20 bg-white/5 rounded-full px-5 py-2">फसल का नुकसान</span>
               </div>
             </FadeIn>
             <FadeIn direction="left">
               <h2 className="text-3xl md:text-5xl font-medium leading-[1.2] tracking-tight text-white mb-8">
-                Traditional Labor-Intensive Farming Highlights <span className="text-red-400">Ongoing Inefficiencies.</span>
+                क्या आप भी इन <span className="text-red-400">समस्याओं</span> से परेशान हैं?
               </h2>
               <div className="space-y-6 text-lg text-white/60 leading-relaxed border-l-2 border-[#22c55e]/30 pl-6">
                 <p>
-                  Due to a lack of precision farming techniques, massive amounts of precious water go to waste every single day.
+                  अंदाजे से पानी देने से पानी और बिजली दोनों की बर्बादी होती है। मोटर ज्यादा चलने से बिजली का बिल बढ़ता है।
                 </p>
                 <p>
-                  Sudden pest attacks destroy entire yields overnight because farmers have no prior warning. Furthermore, farmers are left guessing which markets offer the best prices for their harvest, leading to lost profits.
+                  सिर्फ मोटर चालू/बंद करने के लिए बार-बार खेत के चक्कर लगाने पड़ते हैं। गलत समय पर पानी देने से फसल की पैदावार कम हो जाती है और किसानों का भारी नुकसान होता है।
                 </p>
               </div>
             </FadeIn>
@@ -182,9 +182,9 @@ function App() {
           <div className="max-w-[1400px] mx-auto">
             <FadeIn>
               <div className="flex flex-col md:flex-row justify-between items-end mb-16">
-                <h2 className="text-4xl md:text-5xl font-medium max-w-xl leading-tight">Next-Gen Solutions For Optimal Crop Growth</h2>
+                <h2 className="text-4xl md:text-5xl font-medium max-w-xl leading-tight">AgroDoot – एक खेत, कई फ़सलें 🌾</h2>
                 <p className="text-white/60 max-w-sm mt-6 md:mt-0 text-lg">
-                  We are entirely automating the farm. Manage everything directly from your phone.
+                  यह पूरा स्मार्ट खेती सिस्टम सिर्फ ₹9,999 प्रति एकड़ में उपलब्ध है।
                 </p>
               </div>
             </FadeIn>
@@ -200,12 +200,12 @@ function App() {
                       <div className="bg-[#22c55e] p-3 rounded-xl text-[#021808]">
                         <Map className="w-6 h-6" />
                       </div>
-                      <span className="font-semibold text-xl">1-Month Pest Heatmaps</span>
+                      <span className="font-semibold text-xl">Grid-Based Farming & Pest Alerts</span>
                     </div>
                   </div>
                   <div className="p-8 pt-6">
                     <p className="text-white/70 leading-relaxed text-lg">
-                      Our advanced AI model analyzes crop data to recognize if pests will occur in the field up to a month in advance. We provide precise heatmaps indicating high-risk zones.
+                      AgroDoot खेत को छोटे-छोटे ग्रिड (Zones) में बाँट देता है। यह शुरुआत में ही pest (कीट) के संकेत पहचानकर किसान को चेतावनी देता है और हीटमैप्स प्रदान करता है।
                     </p>
                   </div>
                 </div>
@@ -221,12 +221,12 @@ function App() {
                       <div className="bg-[#22c55e] p-3 rounded-xl text-[#021808]">
                         <Droplets className="w-6 h-6" />
                       </div>
-                      <span className="font-semibold text-xl">Automated AI Irrigation</span>
+                      <span className="font-semibold text-xl">Smart Irrigation & Monitoring</span>
                     </div>
                   </div>
                   <div className="p-8 pt-6">
                     <p className="text-white/70 leading-relaxed text-lg">
-                      Manage irrigation from your phone with the AgroDoot app. AI decides the exact right time to give water to the plants for maximum productivity and minimal waste.
+                      AgroDoot मिट्टी की नमी, तापमान और पौधे की हालत को अपने-आप मापता है। Pump कब ON/OFF करना है — सब AgroDoot खुद तय करता है, जिससे पानी और बिजली की बचत होती है।
                     </p>
                   </div>
                 </div>
@@ -245,7 +245,7 @@ function App() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <h2 className="text-2xl md:text-4xl font-medium leading-relaxed">
-                Get entire farm reports delivered instantly on your <span className="text-[#4ade80]">WhatsApp</span>. Track which agri-markets offer high prices to maximize your profits.
+                स्मार्ट खेती के <span className="text-[#4ade80]">फायदे</span>: कम मेहनत, पानी और बिजली की बचत, और ज़्यादा उपज के साथ घर बैठे अपने खेत की निगरानी करें।
               </h2>
             </FadeIn>
           </div>
@@ -262,16 +262,16 @@ function App() {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#021808]/90 via-[#021808]/80 to-transparent flex flex-col justify-center px-6 sm:px-12 md:px-24">
                 <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium text-white mb-8 max-w-2xl leading-tight">
-                  Join the Agricultural <br className="sm:hidden" /><span className="text-[#4ade80]">Revolution</span> Today.
+                  आज ही <span className="text-[#4ade80]">AgroDoot</span> अपनाएं!
                 </h2>
                 <div className="flex flex-col sm:flex-row w-full max-w-lg bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-[2rem] sm:rounded-full gap-2">
                   <input 
-                    type="email" 
-                    placeholder="Enter your email" 
+                    type="tel" 
+                    placeholder="अपना फ़ोन नंबर दर्ज करें" 
                     className="flex-1 bg-transparent px-6 py-3 sm:py-0 min-w-0 outline-none text-white placeholder-white/50 text-center sm:text-left"
                   />
                   <button className="bg-[#22c55e] text-[#021808] px-8 py-4 rounded-full font-bold hover:bg-[#16a34a] transition-colors w-full sm:w-auto shrink-0">
-                    Subscribe
+                    डेमो बुक करें
                   </button>
                 </div>
               </div>
@@ -283,7 +283,7 @@ function App() {
         <section id="team" className="py-20 border-t border-white/10 relative z-10 bg-[#021307]">
           <div className="max-w-[1400px] mx-auto px-6">
             <div className="flex justify-between items-end mb-16">
-              <h2 className="text-3xl md:text-4xl font-medium">Meet the Innovators</h2>
+              <h2 className="text-3xl md:text-4xl font-medium">हमारी टीम से मिलें</h2>
             </div>
             <div className="flex flex-wrap justify-center gap-12 max-w-6xl mx-auto">
               {[
