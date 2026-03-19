@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Rich aesthetic green background */
+    --background: 151 75% 6%; 
+    --foreground: 0 0% 98%;
+
+    --card: 151 60% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 151 60% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 71% 45%; /* Vibrant emerald/green accent */
+    --primary-foreground: 151 75% 6%;
+
+    --secondary: 151 40% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 151 40% 15%;
+    --muted-foreground: 151 20% 65%;
+
+    --accent: 151 40% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 151 40% 20%;
+    --input: 151 40% 20%;
+    --ring: 142 71% 45%;
+
+    --radius: 1.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+  }
+}
+
+.floating-cross {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+}
+.floating-cross::before, .floating-cross::after {
+  content: '';
+  position: absolute;
+  background-color: currentColor;
+}
+.floating-cross::before {
+  top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%);
+}
+.floating-cross::after {
+  left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%);
+}
+
+.floating-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.3;
+}
