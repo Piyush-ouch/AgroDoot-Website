@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/AgroDoot-Website/', // Adjust this if your GitHub repo name is different
+  base: '/', // Vercel serves at the root domain, so the base must be '/'
 })

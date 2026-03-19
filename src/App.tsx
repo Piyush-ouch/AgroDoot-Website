@@ -3,6 +3,12 @@ import { Leaf, Droplets, Map, MessageSquare, Users, ArrowRight } from 'lucide-re
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import pestHeatmapImg from './assets/pest_heatmap.png';
+import heroImg from './assets/farmer-hero.png';
+import teamMember1 from './assets/team-member-1.png';
+import teamMember2 from './assets/team-member-2.png';
+import teamMember3 from './assets/team-member-3.png';
+
+
 
 const FadeIn = ({ children, delay = 0, direction = 'up' }: { children: React.ReactNode, delay?: number, direction?: 'up' | 'down' | 'left' | 'right' }) => {
   const controls = useAnimation();
@@ -104,7 +110,7 @@ function App() {
             className="w-full h-[50vh] md:h-[70vh] rounded-[2.5rem] overflow-hidden relative shadow-2xl border border-white/10"
           >
             <img 
-              src="/farmer-hero.png" 
+              src={heroImg}
               alt="Lush vibrant green farm with farmer using tech" 
               className="w-full h-full object-cover"
             />
@@ -279,17 +285,25 @@ function App() {
             <div className="flex justify-between items-end mb-16">
               <h2 className="text-3xl md:text-4xl font-medium">Meet the Innovators</h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((i) => (
-                <FadeIn key={i} delay={i * 0.1}>
-                  <div className="group text-center">
+            <div className="flex flex-wrap justify-center gap-12 max-w-6xl mx-auto">
+              {[
+                { id: 1, name: "Mahir Mulani", role: "Founder & Engineer", image: teamMember1 },
+                { id: 2, name: "Piyush Jangade", role: "Co-Founder", image: teamMember2 },
+                { id: 3, name: "Mayuri Patil", role: "Researcher", image: teamMember3 },
+              ].map((member, i) => (
+                <FadeIn key={member.id} delay={i * 0.1}>
+                  <div className="group text-center w-full max-w-[250px]">
                     <div className="aspect-square rounded-full bg-white/5 border border-white/10 mb-6 overflow-hidden relative mx-auto max-w-[200px] group-hover:border-[#22c55e]/50 transition-colors">
-                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
-                        <Users className="w-12 h-12 text-[#22c55e]/50" />
-                      </div>
+                      {member.image ? (
+                        <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
+                          <Users className="w-12 h-12 text-[#22c55e]/50" />
+                        </div>
+                      )}
                     </div>
-                    <h3 className="font-semibold text-xl mb-1">Team Member {i}</h3>
-                    <p className="text-[#4ade80] text-sm font-medium">Founder & Engineer</p>
+                    <h3 className="font-semibold text-xl mb-1">{member.name}</h3>
+                    <p className="text-[#4ade80] text-sm font-medium">{member.role}</p>
                   </div>
                 </FadeIn>
               ))}
