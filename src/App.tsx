@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Leaf, Droplets, Map, MessageSquare, Users, ArrowRight, ChevronDown, Zap, Activity, TrendingDown, CheckCircle2, LayoutGrid, Sprout, Smartphone, Settings, Bug } from 'lucide-react';
+import { Droplets, Map, MessageSquare, Users, ArrowRight, ChevronDown, Zap, Activity, TrendingDown, CheckCircle2, LayoutGrid, Sprout, Smartphone, Settings, Bug } from 'lucide-react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import pestHeatmapImg from './assets/pest_heatmap.png';
 import heroImg from './assets/farmer-hero.png';
 import iotSensorImg from './assets/iot-sensor.png';
+import logoImg from './assets/logo.png';
 import teamMember1 from './assets/team-member-1.png';
 import teamMember2 from './assets/team-member-2.png';
 import teamMember3 from './assets/team-member-3.png';
@@ -64,7 +65,7 @@ function App() {
       <nav className="fixed top-0 w-full z-50 bg-[#021808]/60 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-[1400px] mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Leaf className="w-8 h-8 text-[#22c55e]" />
+            <img src={logoImg} alt="AgroDoot Logo" className="w-10 h-10 object-contain" />
             <span className="text-2xl font-bold tracking-tight text-white hidden sm:block">AgroDoot</span>
           </div>
           
@@ -531,7 +532,7 @@ function App() {
         <div className="max-w-[1400px] mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-12">
           <div className="sm:col-span-2 md:col-span-1 md:border-r border-white/5 md:pr-8">
             <div className="flex items-center gap-2 mb-6">
-              <Leaf className="w-8 h-8 text-[#22c55e]" />
+              <img src={logoImg} alt="AgroDoot Logo" className="w-10 h-10 object-contain" />
               <span className="text-2xl font-bold tracking-tight text-white">AgroDoot</span>
             </div>
             <p className="text-sm text-white/50 leading-relaxed">
