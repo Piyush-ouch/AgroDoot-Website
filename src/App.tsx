@@ -423,18 +423,18 @@ function App() {
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto cursor-default">
               {/* Starter Kit */}
               <FadeIn delay={0.1}>
-                <div className="bg-white/5 border border-white/10 rounded-[3rem] p-10 h-full flex flex-col items-center hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-2xl">
-                  <h3 className="text-2xl font-bold text-white mb-6">{t.starterKit}</h3>
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-10 tracking-tight">{t.starterPrice}</div>
-                  <ul className="space-y-4 mb-12 w-full max-w-[280px] mx-auto flex-1">
+                <div className="bg-[#0f2e1b]/80 border border-white/10 rounded-2xl p-8 h-full flex flex-col hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-xl">
+                  <h3 className="text-xl font-bold text-white mb-4">{t.starterKit}</h3>
+                  <div className="text-4xl md:text-5xl font-extrabold text-[#4ade80] mb-8 tracking-tight">{t.starterPrice}</div>
+                  <ul className="space-y-4 mb-10 flex-1">
                     {[t.sk1, t.sk2, t.sk3, t.sk4].map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-4 text-white/80 font-medium">
-                        <CheckCircle2 className="w-5 h-5 text-[#22c55e] shrink-0" />
+                      <li key={idx} className="flex items-start gap-3 text-white/90 font-medium">
+                        <span className="text-[#22c55e] font-bold mt-0.5">✓</span>
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <button className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-4 rounded-full font-bold transition-all mt-auto backdrop-blur-md">
+                  <button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/20 py-3 rounded-xl font-bold transition-all mt-auto backdrop-blur-md">
                     {t.orderNow}
                   </button>
                 </div>
@@ -442,21 +442,21 @@ function App() {
 
               {/* Full Farm Kit */}
               <FadeIn delay={0.2}>
-                <div className="bg-[#052912] border-2 border-[#22c55e]/50 rounded-[3rem] p-10 h-full flex flex-col items-center relative shadow-[0_0_40px_rgba(34,197,94,0.15)] hover:border-[#22c55e] transition-all duration-300 md:-translate-y-4">
-                  <div className="absolute -top-4 bg-[#eab308] text-[#021808] px-6 py-1.5 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg">
+                <div className="bg-[#0f2e1b]/90 border border-[#22c55e] rounded-2xl p-8 h-full flex flex-col relative shadow-[0_0_30px_rgba(34,197,94,0.1)] hover:shadow-[0_0_40px_rgba(34,197,94,0.2)] transition-all duration-300">
+                  <div className="absolute -top-3 left-8 bg-[#fbbf24] text-[#021808] px-3 py-1 rounded-md text-xs font-bold tracking-wider uppercase shadow-md">
                     {t.bestValue}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-6 mt-4">{t.fullKit}</h3>
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-10 tracking-tight">{t.fullPrice}</div>
-                  <ul className="space-y-4 mb-12 w-full max-w-[280px] mx-auto flex-1">
+                  <h3 className="text-xl font-bold text-white mb-4 mt-2">{t.fullKit}</h3>
+                  <div className="text-4xl md:text-5xl font-extrabold text-[#4ade80] mb-8 tracking-tight">{t.fullPrice}</div>
+                  <ul className="space-y-4 mb-10 flex-1">
                     {[t.fk1, t.fk2, t.fk3, t.fk4, t.fk5].map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-4 text-white/80 font-medium">
-                        <CheckCircle2 className="w-5 h-5 text-[#22c55e] shrink-0" />
+                      <li key={idx} className="flex items-start gap-3 text-white/90 font-medium">
+                        <span className="text-[#22c55e] font-bold mt-0.5">✓</span>
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <button className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-[#021808] py-4 rounded-full font-bold transition-all mt-auto shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]">
+                  <button className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-[#021808] py-3 rounded-xl font-bold transition-all mt-auto shadow-[0_0_15px_rgba(34,197,94,0.2)]">
                     {t.orderNow}
                   </button>
                 </div>
