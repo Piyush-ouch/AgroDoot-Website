@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroDoot - e-Yantra National Finale Brochure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #e5e5e5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+      gap: 30px;
+    }
+
+    h1.print-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── BROCHURE WRAPPER ─────────────────────── */
+    .brochure-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 1122px; /* A4 landscape width in px at 96dpi */
+    }
+
+    /* FRONT side (when folded: Panel-3 | Panel-2 | Panel-1) */
+    /* BACK side (when folded: Panel-4 | Panel-5 | Panel-6) */
+    .brochure-side {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 1122px;
+      height: 794px; /* A4 landscape height */
+      background: white;
+      overflow: hidden;
+    }
+
+    .brochure-side.back {
+      margin-top: 2px;
+    }
+
+    /* ── PANEL BASE ────────────────────────────── */
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border-right: 1px dashed #ccc;
+      padding: 24px 28px;
+    }
+    .panel:last-child { border-right: none; }
+
+    /* ── COLORS ─────────────────────────────────── */
+    .dark-green { background: #0a2e16; color: white; }
+    .mid-green  { background: #0f3b1c; color: white; }
+    .light-green { background: #f0fdf4; color: #011a08; }
+    .white-panel { background: #ffffff; color: #011a08; }
+    .accent-green { background: #16a34a; color: white; }
+
+    /* ── DECORATIVE CIRCLES ─────────────────────── */
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.08;
+    }
+
+    /* ── LOGO BLOCK ──────────────────────────────── */
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .logo-block img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+    .logo-block span {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    /* ── SECTION LABEL ──────────────────────────── */
+    .label-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #22c55e;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+    .label-tag.dark { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); }
+
+    /* ── HEADINGS ────────────────────────────────── */
+    .panel-title {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    .highlight { color: #22c55e; }
+    .highlight-yellow { color: #fbbf24; }
+
+    /* ── TEXT ─────────────────────────────────────── */
+    .panel-body {
+      font-size: 12px;
+      line-height: 1.7;
+      opacity: 0.75;
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    /* ── CHECKLIST ──────────────────────────────── */
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      line-height: 1.5;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    .checklist li .dot {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      color: #011a08;
+      margin-top: 1px;
+    }
+
+    /* ── FEATURE CARDS ──────────────────────────── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .feature-card {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .feature-card .icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+    .feature-card .fc-title {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .feature-card .fc-desc {
+      font-size: 10px;
+      opacity: 0.65;
+      line-height: 1.5;
+    }
+
+    /* ── STEP PROCESS ───────────────────────────── */
+    .steps { display: flex; flex-direction: column; gap: 8px; }
+    .step-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .step-num {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #22c55e;
+      color: #011a08;
+      font-weight: 800;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-content .step-title { font-size: 12px; font-weight: 800; margin-bottom: 2px; }
+    .step-content .step-desc { font-size: 10px; opacity: 0.85; line-height: 1.4; font-weight: 500; }
+
+    /* ── TEAM CARDS ──────────────────────────────── */
+    .team-grid { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; }
+    .team-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #22c55e;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+    .avatar-placeholder {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #22c55e22, #16a34a44);
+      border: 2px solid #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .team-name { font-size: 14px; font-weight: 800; margin-bottom: 3px; }
+    .team-role { font-size: 11px; color: #4ade80; font-weight: 700; letter-spacing: 0.5px; }
+    .team-bio  { font-size: 10.5px; opacity: 0.65; margin-top: 4px; line-height: 1.5; }
+
+    /* ── STAT ROW ────────────────────────────────── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .stat-box {
+      background: rgba(34,197,94,0.1);
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(34,197,94,0.2);
+    }
+    .stat-val { font-size: 20px; font-weight: 800; color: #22c55e; }
+    .stat-lbl { font-size: 9px; font-weight: 600; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* ── PRICING ─────────────────────────────────── */
+    .price-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 8px;
+    }
+    .price-box.featured { border-color: #22c55e; background: rgba(34,197,94,0.07); }
+    .price-name { font-size: 12px; font-weight: 800; margin-bottom: 4px; }
+    .price-val { font-size: 24px; font-weight: 900; letter-spacing: -1px; color: #22c55e; margin-bottom: 8px; }
+    .price-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .price-list li { font-size: 10px; font-weight: 500; opacity: 0.9; display: flex; gap: 5px; align-items: center; }
+    .price-list li::before { content: '✓'; color: #22c55e; font-weight: 800; font-size: 11px; }
+    .best-badge {
+      display: inline-block;
+      background: #fbbf24;
+      color: #011a08;
+      font-size: 8px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 100px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    /* ── QR / CONTACT ZONE ──────────────────────── */
+    .contact-section {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 16px;
+    }
+    .contact-row { display: flex; gap: 8px; align-items: center; font-size: 10px; margin-bottom: 6px; opacity: 0.8; }
+    .contact-icon { font-size: 14px; }
+    .contact-val { font-weight: 600; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 10px 0;
+    }
+    .divider-dark {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      margin: 10px 0;
+    }
+
+    /* ── COVER PANEL SPECIALS ───────────────────── */
+    .hero-tagline {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 12px;
+    }
+    .sub-tagline {
+      font-size: 13px;
+      opacity: 0.7;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #22c55e;
+      color: #011a08;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 9px 18px;
+      border-radius: 100px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── PRINT SETTINGS ─────────────────────────── */
+    @media print {
+      body { background: white; padding: 0; }
+      h1.print-label { display: none; }
+      .brochure-wrapper { width: 297mm; }
+      .brochure-side { width: 297mm; height: 210mm; page-break-after: always; }
+      .panel { border-right-style: solid; border-right-color: #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="print-label">🖨️ AgroDoot — e-Yantra Tri-Fold Brochure &nbsp;|&nbsp; Ctrl+P to Print</h1>
+
+  <div class="brochure-wrapper">
+
+    <!-- ═══════════════════════════════════════════════════════ 
+         FRONT SIDE: [LEFT PANEL] [CENTER PANEL] [COVER PANEL]
+         ═══════════════════════════════════════════════════════ -->
+    <div class="brochure-side">
+
+      <!-- FRONT LEFT — Problem Statement -->
+      <div class="panel light-green">
+        <!-- Deco -->
+        <div class="deco-circle" style="width:220px;height:220px;background:#16a34a;top:-80px;right:-80px;"></div>
+        <div class="deco-circle" style="width:120px;height:120px;background:#15803d;bottom:-40px;left:-40px;"></div>
+
+        <div class="label-tag" style="color:#15803d;background:rgba(21,128,61,0.1);border-color:rgba(21,128,61,0.3);">🌾 The Challenge</div>
+        <div class="panel-title" style="color:#011a08;">Traditional Farming<br><span style="color:#16a34a;">Faces Big Losses</span></div>
+        <p class="panel-body" style="color:#374151;">Indian farmers lose hundreds of crore rupees every year due to inefficient water usage, unpredictable pest attacks, and lack of real-time crop intelligence.</p>
+
+        <ul class="checklist">
+          <li>
+            <span class="dot" style="background:#ef4444;color:white;">✕</span>
+            <span style="color:#111;">Guesswork irrigation wastes 40-60% of water daily</span>
+          </li>
+          <li>
+            <span class="dot" style="background:#f59e0b;color:white;">✕</span>
+            <span style="color:#111;">Sudden pest attacks destroy crops overnight</span>
+          </li>
+          <li>
+            <span class="dot" style="background:#ef4444;color:white;">✕</span>
+            <span style="color:#111;">Farmers constantly travel to manually start/stop motors</span>
+          </li>
+          <li>
+            <span class="dot" style="background:#f59e0b;color:white;">✕</span>
+            <span style="color:#111;">No way to know which market gives best crop prices</span>
+          </li>
+          <li>
+            <span class="dot" style="background:#ef4444;color:white;">✕</span>
+            <span style="color:#111;">High electricity bills from unoptimized pump usage</span>
+          </li>
+        </ul>
+
+        <hr class="divider-dark" />
+
+        <div class="label-tag" style="color:#15803d;background:rgba(21,128,61,0.1);border-color:rgba(21,128,61,0.3);">✅ The Solution</div>
+        <p class="panel-body" style="color:#374151;margin-bottom:8px;">AgroDoot completely automates the farm using AI, IoT sensors, and mobile connectivity — removing the burden from the farmer's hands.</p>
+
+        <div class="stat-row">
+          <div class="stat-box" style="background:rgba(21,128,61,0.08);border-color:rgba(21,128,61,0.2);">
+            <div class="stat-val" style="color:#15803d;">40%</div>
+            <div class="stat-lbl" style="color:#374151;">Water Saved</div>
+          </div>
+          <div class="stat-box" style="background:rgba(21,128,61,0.08);border-color:rgba(21,128,61,0.2);">
+            <div class="stat-val" style="color:#15803d;">80%</div>
+            <div class="stat-lbl" style="color:#374151;">AI Accuracy</div>
+          </div>
+          <div class="stat-box" style="background:rgba(21,128,61,0.08);border-color:rgba(21,128,61,0.2);">
+            <div class="stat-val" style="color:#15803d;">24/7</div>
+            <div class="stat-lbl" style="color:#374151;">Monitoring</div>
+          </div>
+          <div class="stat-box" style="background:rgba(21,128,61,0.08);border-color:rgba(21,128,61,0.2);">
+            <div class="stat-val" style="color:#15803d;">10+</div>
+            <div class="stat-lbl" style="color:#374151;">Smart Features</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FRONT CENTER — How It Works + Pricing -->
+      <div class="panel mid-green">
+        <div class="deco-circle" style="width:180px;height:180px;background:#22c55e;top:-60px;left:-60px;"></div>
+
+        <div class="label-tag dark">⚙️ How It Works</div>
+        <div class="panel-title" style="font-size:22px;margin-bottom:10px;">4 Simple Steps to a<br><span class="highlight">Smarter Farm</span></div>
+
+        <div class="steps">
+          <div class="step-row">
+            <span class="step-num">1</span>
+            <div class="step-content">
+              <div class="step-title">Sensor Measurement</div>
+              <div class="step-desc">AgroDoot IoT probes constantly monitor soil moisture, temperature, and humidity in real-time.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <span class="step-num">2</span>
+            <div class="step-content">
+              <div class="step-title">AI Decision Engine</div>
+              <div class="step-desc">The embedded AI model processes sensor data to decide if irrigation or alerts are needed immediately.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <span class="step-num">3</span>
+            <div class="step-content">
+              <div class="step-title">Automated Action</div>
+              <div class="step-desc">The water motor automatically turns ON or OFF. Zero human intervention required, zero water waste.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <span class="step-num">4</span>
+            <div class="step-content">
+              <div class="step-title">Instant Mobile Alerts</div>
+              <div class="step-desc">Farmer receives live updates, pest warnings, and market prices directly on WhatsApp &amp; the app.</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="label-tag dark">💰 Our Pricing</div>
+        <div class="price-box">
+          <div class="price-name">🌱 Starter Kit</div>
+          <div class="price-val">₹17,000/-</div>
+          <ul class="price-list">
+            <li>1 Sensor Unit</li>
+            <li>Basic Controller</li>
+            <li>Mobile App Support</li>
+            <li>8 Months Validity</li>
+          </ul>
+        </div>
+        <div class="price-box featured">
+          <div class="best-badge">BEST VALUE</div>
+          <div class="price-name">🌾 Full Farm Kit</div>
+          <div class="price-val">₹30,000/-</div>
+          <ul class="price-list">
+            <li>4 Zone-wise Sensor Units</li>
+            <li>Advanced Controller</li>
+            <li>Full Automation Suite</li>
+            <li>Mobile + SMS Alerts</li>
+            <li>12 Months Validity</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FRONT COVER (rightmost = visible when folded) -->
+      <div class="panel dark-green">
+        <div class="deco-circle" style="width:300px;height:300px;background:#22c55e;bottom:-100px;right:-100px;"></div>
+        <div class="deco-circle" style="width:120px;height:120px;background:#4ade80;top:30px;right:-30px;"></div>
+
+        <!-- Logo -->
+        <div class="logo-block">
+          <img src="src/assets/logo.png" alt="AgroDoot Logo" />
+          <span>AgroDoot</span>
+        </div>
+
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4ade80;font-weight:700;margin-bottom:20px;">Precision Agriculture · AI · IoT</div>
+
+        <div class="hero-tagline">
+          Smart<br>Farming<br><span class="highlight">Starts Here.</span>
+        </div>
+        <p class="sub-tagline">Automating Indian agriculture with AI-powered irrigation, 1-month pest predictions, and real-time WhatsApp farm intelligence.</p>
+
+        <div class="pill-btn">🌱 e-Yantra National Finale 2025</div>
+
+        <div style="position: absolute; bottom: 36px; left: 28px; right: 28px;">
+          <div style="font-size: 9px; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Presented at</div>
+          <div style="font-size: 13px; font-weight: 700; color: #4ade80;">IIT Bombay · e-Yantra</div>
+          <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">Theme: Agriculture & Environment</div>
+        </div>
+      </div>
+
+    </div><!-- end FRONT SIDE -->
+
+
+    <!-- ═══════════════════════════════════════════════════════ 
+         BACK SIDE: [PANEL-4 Back-Cover] [PANEL-5 Features] [PANEL-6 Team]
+         ═══════════════════════════════════════════════════════ -->
+    <div class="brochure-side back">
+
+      <!-- BACK LEFT — Inside back cover / Contact -->
+      <div class="panel light-green">
+        <div class="deco-circle" style="width:250px;height:250px;background:#22c55e;top:-80px;left:-80px;"></div>
+
+        <div class="label-tag" style="color:#15803d;background:rgba(21,128,61,0.1);border-color:rgba(21,128,61,0.3);">🌾 One Farm, Many Crops</div>
+        <div class="panel-title" style="color:#011a08;font-size:22px;margin-bottom:10px;">AgroDoot's<br><span class="highlight">Grid-Zone Technology</span></div>
+        <p class="panel-body" style="color:#374151;">Divide your farm into independent smart zones. Each zone gets its own water, monitoring, and pest prediction — allowing multiple crops to grow simultaneously.</p>
+
+        <ul class="checklist">
+          <li><span class="dot" style="color:white;">✓</span><span style="color:#111;">Zone-wise soil moisture monitoring</span></li>
+          <li><span class="dot" style="color:white;">✓</span><span style="color:#111;">Grow tomatoes, onions, wheat — simultaneously</span></li>
+          <li><span class="dot" style="color:white;">✓</span><span style="color:#111;">Each zone independently irrigated</span></li>
+          <li><span class="dot" style="color:white;">✓</span><span style="color:#111;">30-50% water savings per crop cycle</span></li>
+          <li><span class="dot" style="color:white;">✓</span><span style="color:#111;">AI adapts to each crop's unique water needs</span></li>
+        </ul>
+
+        <hr class="divider-dark" />
+
+        <div class="label-tag" style="color:#15803d;background:rgba(21,128,61,0.1);border-color:rgba(21,128,61,0.3);">📞 Get In Touch</div>
+        <div class="contact-section" style="background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.2);">
+          <div class="contact-row"><span class="contact-icon">🌐</span><span class="contact-val" style="color:#111;">agrodoot-website.vercel.app</span></div>
+          <div class="contact-row"><span class="contact-icon">📞</span><span class="contact-val" style="color:#111;">+91 8010764435</span></div>
+          <div class="contact-row"><span class="contact-icon">📍</span><span class="contact-val" style="color:#111;">Maharashtra, India</span></div>
+          <div class="contact-row"><span class="contact-icon">📱</span><span class="contact-val" style="color:#111;">WhatsApp-enabled Smart Alerts</span></div>
+        </div>
+
+        <div style="position:absolute;bottom:28px;left:28px;right:28px;text-align:center;opacity:0.6;color:#374151;font-size:9px;letter-spacing:1px;">© 2025 AgroDoot. All Rights Reserved.</div>
+      </div>
+
+      <!-- BACK CENTER — Key Features -->
+      <div class="panel light-green">
+        <div class="deco-circle" style="width:200px;height:200px;background:#16a34a;bottom:-70px;right:-70px;"></div>
+
+        <div class="label-tag" style="color:#15803d;background:rgba(21,128,61,0.1);border-color:rgba(21,128,61,0.3);">🚀 Key Features</div>
+        <div class="panel-title" style="color:#011a08;font-size:22px;margin-bottom:16px;">Everything Your Farm<br><span style="color:#16a34a;">Needs to Thrive</span></div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon">🗺️</div>
+            <div class="fc-title">Pest Heatmaps</div>
+            <div class="fc-desc">AI predicts pest attacks up to 30 days in advance with precision heatmap visualization.</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">💧</div>
+            <div class="fc-title">Auto Irrigation</div>
+            <div class="fc-desc">Soil-based AI triggers pump automatically. Saves 40% water and 30% electricity.</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📱</div>
+            <div class="fc-title">Mobile Control</div>
+            <div class="fc-desc">Control your entire farm remotely from your smartphone, anytime, from anywhere.</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">💬</div>
+            <div class="fc-title">WhatsApp Reports</div>
+            <div class="fc-desc">Get complete farm reports and alerts delivered instantly to your WhatsApp every day.</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📈</div>
+            <div class="fc-title">Market Prices</div>
+            <div class="fc-desc">Track live crop prices across cities to know exactly when and where to sell your harvest.</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🌡️</div>
+            <div class="fc-title">Env. Monitoring</div>
+            <div class="fc-desc">Continuous tracking of soil moisture, temperature, humidity, and solar radiation.</div>
+          </div>
+        </div>
+
+        <hr class="divider-dark" style="margin-top:16px;" />
+        <p style="font-size:10px;color:#374151;opacity:0.6;text-align:center;font-style:italic;">"Bringing Precision Agriculture to Every Indian Farmer's Fingertips"</p>
+      </div>
+
+      <!-- BACK RIGHT — Team Section -->
+      <div class="panel light-green">
+        <div class="deco-circle" style="width:200px;height:200px;background:#4ade80;top:-60px;right:-60px;opacity:0.15;"></div>
+
+        <div class="label-tag" style="color:#15803d;background:rgba(21,128,61,0.1);border-color:rgba(21,128,61,0.3);">👥 Meet the Innovators</div>
+        <div class="panel-title" style="color:#011a08;font-size:22px;margin-bottom:6px;">The Team Behind<br><span class="highlight">AgroDoot</span></div>
+        <p class="panel-body" style="color:#374151;">A passionate team of engineers and researchers from Maharashtra, committed to transforming Indian agriculture with technology.</p>
+
+        <div class="team-grid">
+          <div class="team-card" style="background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.2);">
+            <img class="avatar" src="src/assets/team-member-1.png" alt="Mahir Mulani" onerror="this.style.display='none';this.nextSibling.style.display='flex';" />
+            <div class="avatar-placeholder" style="display:none;">👨‍💻</div>
+            <div>
+              <div class="team-name" style="color:#011a08;">Mahir Mulani</div>
+              <div class="team-role" style="color:#16a34a;">Founder & Engineer</div>
+              <div class="team-bio" style="color:#374151;">Leads hardware R&D and sensor systems. Expert in IoT and embedded systems for agriculture.</div>
+            </div>
+          </div>
+          <div class="team-card" style="background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.2);">
+            <img class="avatar" src="src/assets/team-member-2.png" alt="Piyush Jangade" onerror="this.style.display='none';this.nextSibling.style.display='flex';" />
+            <div class="avatar-placeholder" style="display:none;">👨‍💻</div>
+            <div>
+              <div class="team-name" style="color:#011a08;">Piyush Jangade</div>
+              <div class="team-role" style="color:#16a34a;">Co-Founder</div>
+              <div class="team-bio" style="color:#374151;">Drives product strategy, software development, and full-stack platform architecture.</div>
+            </div>
+          </div>
+          <div class="team-card" style="background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.2);">
+            <img class="avatar" src="src/assets/team-member-3.png" alt="Mayuri Patil" onerror="this.style.display='none';this.nextSibling.style.display='flex';" />
+            <div class="avatar-placeholder" style="display:none;">👩‍🔬</div>
+            <div>
+              <div class="team-name" style="color:#011a08;">Mayuri Patil</div>
+              <div class="team-role" style="color:#16a34a;">Researcher</div>
+              <div class="team-bio" style="color:#374151;">Specializes in agricultural data science and field research with farmers.</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider-dark" />
+
+        <div style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+          <img src="src/assets/logo.png" alt="logo" style="width:32px;height:32px;object-fit:contain;" />
+          <div>
+            <div style="font-size:14px;font-weight:800;letter-spacing:-0.5px;color:#011a08;">AgroDoot</div>
+            <div style="font-size:9px;opacity:0.6;color:#374151;letter-spacing:1px;text-transform:uppercase;">e-Yantra Nationals 2025 · IIT Bombay</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end BACK SIDE -->
+
+  </div><!-- end brochure-wrapper -->
+
+</body>
+</html>

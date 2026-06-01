@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Powered Smart Wind Turbine Optimization System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #e5e5e5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    .poster {
+      width: 794px;
+      height: 1123px;
+      background: linear-gradient(170deg, #0f172a 0%, #0b1222 50%, #091018 100%);
+      color: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── DECORATIVE ──────────────────────────── */
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+    }
+
+    /* ── INNER WRAPPER ──────────────────────── */
+    .inner {
+      position: relative;
+      z-index: 1;
+      padding: 24px 36px;
+    }
+
+    /* ── HEADER ──────────────────────────────── */
+    .tag-pill {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #38bdf8;
+      background: rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.35);
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+
+    .poster-title {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+    .poster-title span { color: #38bdf8; }
+
+    /* ── TWO COLUMN ROW ─────────────────────── */
+    .row-2 {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      margin-bottom: 16px;
+    }
+    .col {
+      display: table-cell;
+      vertical-align: top;
+    }
+    .col + .col { padding-left: 14px; }
+
+    /* ── CARD / SECTION BOX ─────────────────── */
+    .card {
+      background: rgba(30,41,59,0.55);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .card-header {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .card-header .icon { margin-right: 6px; }
+
+    .card-body {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.55;
+    }
+
+    .card-body ul {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .card-body ul li {
+      padding: 3px 0;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+    .card-body ul li::before {
+      content: '•';
+      color: #38bdf8;
+      font-weight: 900;
+      margin-right: 6px;
+    }
+    .card-blue { border-color: rgba(56,189,248,0.25); }
+    .card-blue .card-header { color: #38bdf8; }
+    .card-blue .card-body ul li::before { color: #38bdf8; }
+    .card-blue .card-body ul li { color: #bae6fd; }
+
+    /* ── FLOW CHART ─────────────────────────── */
+    .flow-section {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .flow-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: #e0e7ff;
+      margin-bottom: 10px;
+    }
+    .flow-bar {
+      display: table;
+      width: 100%;
+      background: rgba(15,23,42,0.7);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .flow-item {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      width: 18%;
+    }
+    .flow-arrow {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      width: 5%;
+      color: #6366f1;
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .flow-icon-circle {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      font-size: 18px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.4);
+      border-radius: 50%;
+      margin-bottom: 4px;
+    }
+    .flow-text {
+      font-size: 10px;
+      font-weight: 700;
+      color: #c7d2fe;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ── AI COMPONENT CARDS (3 col) ─────────── */
+    .ai-label {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .ai-label .sub { font-weight: 400; font-size: 12px; color: #64748b; margin-left: 6px; }
+
+    .row-3 {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      margin-bottom: 16px;
+    }
+    .col3 {
+      display: table-cell;
+      vertical-align: top;
+    }
+    .col3 + .col3 { padding-left: 12px; }
+
+    .ai-card {
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-top: 3px solid #38bdf8;
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .ai-card.green { border-top-color: #10b981; border-color: rgba(16,185,129,0.2); }
+    .ai-card.purple { border-top-color: #8b5cf6; border-color: rgba(139,92,246,0.2); }
+
+    .ai-card-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 8px;
+    }
+    .ai-tag {
+      font-size: 11px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 5px 8px;
+      border-radius: 5px;
+      color: #cbd5e1;
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+    .ai-tag:last-child { margin-bottom: 0; }
+    .ai-tag strong { color: #38bdf8; font-weight: 700; margin-right: 3px; }
+    .green .ai-tag strong { color: #10b981; }
+    .purple .ai-tag strong { color: #8b5cf6; }
+    .ai-tag.highlight-blue { border-color: rgba(56,189,248,0.3); background: rgba(56,189,248,0.05); }
+    .ai-tag.highlight-green { border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.05); }
+    .ai-tag.highlight-purple { border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.05); }
+
+    /* ── IMPACT SECTION ─────────────────────── */
+    .impact-section {
+      background: rgba(16,185,129,0.04);
+      border: 1px solid rgba(16,185,129,0.15);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .impact-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #34d399;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(16,185,129,0.1);
+    }
+    .impact-grid {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .impact-col {
+      display: table-cell;
+      vertical-align: top;
+    }
+    .impact-col + .impact-col { padding-left: 12px; }
+
+    .impact-item {
+      background: linear-gradient(90deg, rgba(16,185,129,0.1), rgba(16,185,129,0.02));
+      border-left: 3px solid #10b981;
+      padding: 10px 12px;
+      border-radius: 3px 6px 6px 3px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #a7f3d0;
+      margin-bottom: 8px;
+    }
+    .impact-item:last-child { margin-bottom: 0; }
+    .impact-item .emoji { margin-right: 8px; font-size: 18px; }
+
+    /* ── STATS ─────────────────────────────── */
+    .stats-section {
+      margin-top: 14px;
+    }
+    .stats-grid {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .stat-card {
+      display: table-cell;
+      vertical-align: top;
+      text-align: center;
+      background: rgba(30,41,59,0.5);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 16px 10px;
+    }
+    .stat-card + .stat-card { margin-left: 12px; }
+    .stat-val {
+      font-size: 28px;
+      font-weight: 900;
+      color: #38bdf8;
+      margin-bottom: 4px;
+    }
+    .stat-val.green { color: #10b981; }
+    .stat-val.purple { color: #a78bfa; }
+    .stat-val.amber { color: #fbbf24; }
+    .stat-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .tech-row {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      margin-top: 14px;
+    }
+    .tech-item {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      background: rgba(15,23,42,0.6);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 10px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+    .tech-item + .tech-item { margin-left: 10px; }
+    .tech-item .tech-icon { font-size: 18px; display: block; margin-bottom: 4px; }
+
+    /* ── PRINT SETTINGS ──────────────────────── */
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: white; padding: 0; margin: 0; }
+      .poster {
+        width: 210mm;
+        height: 297mm;
+        border-radius: 0;
+      }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster">
+    <!-- Decorative Glows -->
+    <div class="glow" style="width:350px;height:350px;background:#3b82f6;top:-120px;right:-120px;opacity:0.2;"></div>
+    <div class="glow" style="width:300px;height:300px;background:#10b981;bottom:-100px;left:-100px;opacity:0.15;"></div>
+    <div class="glow" style="width:200px;height:200px;background:#8b5cf6;bottom:250px;right:-50px;opacity:0.1;"></div>
+
+    <div class="inner">
+      <!-- ═══ HEADER ═══ -->
+      <div style="text-align:center; margin-bottom:18px;">
+        <div class="tag-pill">⚡ Next-Gen Renewable Tech</div>
+        <div class="poster-title" style="margin-bottom: 6px;">AI-Powered Smart Wind Turbine<br><span>Optimization System</span></div>
+        <div style="font-size:15px; color:#94a3b8; font-weight:600;">
+          Name: <span style="color:#f1f5f9;">Anisha Ghodeswar</span> &nbsp;&nbsp;|&nbsp;&nbsp; PRN: <span style="color:#f1f5f9;">202401110001</span>
+        </div>
+      </div>
+
+      <!-- ═══ PROBLEM + SOLUTION (2 cols) ═══ -->
+      <div class="row-2">
+        <div class="col">
+          <div class="card">
+            <div class="card-header"><span class="icon">🛑</span> Core Problem</div>
+            <div class="card-body">
+              Wind energy is unpredictable, and turbines often:
+              <ul>
+                <li>Run at suboptimal rotational speeds</li>
+                <li>Face excessive mechanical stress & wear</li>
+                <li>Waste potential energy due to poor control strategies</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-blue">
+            <div class="card-header"><span class="icon">💡</span> Enhanced Solution</div>
+            <div class="card-body" style="color:#bae6fd;">
+              An AI-driven control + prediction system that:
+              <ul>
+                <li>Predicts wind speed in advance (short-term forecasting)</li>
+                <li>Dynamically adjusts turbine parameters (blade pitch & RPM)</li>
+                <li>Minimizes wear using intelligent RL control strategies</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ ARCHITECTURE FLOW ═══ -->
+      <div class="flow-section">
+        <div class="flow-label">⚙️ System Architecture Flow</div>
+        <div class="flow-bar">
+          <div class="flow-item">
+            <div class="flow-icon-circle">⛅</div><br>
+            <span class="flow-text">Weather Data</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item">
+            <div class="flow-icon-circle">🧠</div><br>
+            <span class="flow-text">AI Model</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item">
+            <div class="flow-icon-circle">📊</div><br>
+            <span class="flow-text">Prediction</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item">
+            <div class="flow-icon-circle">🎛️</div><br>
+            <span class="flow-text">Control Sys.</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item">
+            <div class="flow-icon-circle">🔄</div><br>
+            <span class="flow-text">Adjustment</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ AI COMPONENTS (3 cols) ═══ -->
+      <div class="ai-label">🧠 AI Components <span class="sub">(The Core Strength)</span></div>
+      <div class="row-3">
+        <div class="col3">
+          <div class="ai-card">
+            <div class="ai-card-title">1. Wind Prediction</div>
+            <div class="ai-tag"><strong>Use:</strong> LSTM (Long Short-Term Memory)</div>
+            <div class="ai-tag"><strong>Inputs:</strong> Wind speed history, Temp, Pressure, Humidity</div>
+            <div class="ai-tag highlight-blue"><strong>👉 Output:</strong> Future wind speed (next 5–30 min)</div>
+          </div>
+        </div>
+        <div class="col3">
+          <div class="ai-card green">
+            <div class="ai-card-title">2. Optimization Model</div>
+            <div class="ai-tag"><strong>Use:</strong> Reinforcement Learning (RL)</div>
+            <div class="ai-tag"><strong>Goal:</strong> Max energy output, min stress on turbine</div>
+            <div class="ai-tag highlight-green"><strong>👉 Actions:</strong> Adjust blade pitch angle & rotational speed</div>
+          </div>
+        </div>
+        <div class="col3">
+          <div class="ai-card purple">
+            <div class="ai-card-title">3. Wear Prediction 🔥</div>
+            <div class="ai-tag"><strong>Use:</strong> Regression & Anomaly Detection</div>
+            <div class="ai-tag"><strong>Goal:</strong> Advance warning for mechanical degradation</div>
+            <div class="ai-tag highlight-purple"><strong>👉 Predict:</strong> Part failure timing & maintenance schedule</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ ENVIRONMENTAL IMPACT ═══ -->
+      <div class="impact-section">
+        <div class="impact-title">🌍 Environmental Impact</div>
+        <div class="impact-grid">
+          <div class="impact-col">
+            <div class="impact-item"><span class="emoji">⚡</span> Higher energy efficiency — more electricity from same wind</div>
+            <div class="impact-item"><span class="emoji">♻️</span> Reduced maintenance — less material waste</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-item"><span class="emoji">⏳</span> Significantly longer turbine lifespan</div>
+            <div class="impact-item"><span class="emoji">🍃</span> Directly supports clean energy adoption</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ KEY STATS + TECH STACK ═══ -->
+      <div class="stats-section">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-val">35%</div>
+            <div class="stat-lbl">More Energy Output</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val green">40%</div>
+            <div class="stat-lbl">Less Maintenance Cost</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val purple">30 min</div>
+            <div class="stat-lbl">Forecast Horizon</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val amber">2×</div>
+            <div class="stat-lbl">Turbine Lifespan</div>
+          </div>
+      </div>
+
+    </div><!-- end inner -->
+  </div><!-- end poster -->
+
+</body>
+</html>
