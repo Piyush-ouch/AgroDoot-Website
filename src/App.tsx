@@ -1078,14 +1078,14 @@ function App() {
       {/* Solution Detail Modal */}
       <AnimatePresence>
         {selectedSolution !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 overflow-y-auto">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedSolution(null)}
-              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+              className="fixed inset-0 bg-black/85 backdrop-blur-md"
             />
             
             {/* Modal Card */}
@@ -1094,7 +1094,7 @@ function App() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 30 }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="relative w-full max-w-2xl bg-gradient-to-br from-[#063016] to-[#021808] border border-[#22c55e]/30 rounded-[2.5rem] p-8 md:p-10 shadow-2xl overflow-hidden z-10"
+              className="relative w-full max-w-2xl bg-gradient-to-br from-[#063016] to-[#021808] border border-[#22c55e]/30 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 shadow-2xl my-auto z-10"
             >
               {/* Glow effects inside modal */}
               <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-[#22c55e]/15 blur-[80px] rounded-full pointer-events-none" />
@@ -1124,7 +1124,7 @@ function App() {
               </div>
 
               {/* Card image inside Modal */}
-              <div className="w-full h-[220px] rounded-2xl overflow-hidden border border-white/10 mb-6 shadow-inner relative">
+              <div className="w-full h-[180px] sm:h-[220px] rounded-2xl overflow-hidden border border-white/10 mb-6 shadow-inner relative">
                 <img 
                   src={solutions[selectedSolution].img} 
                   alt={solutions[selectedSolution].title} 
