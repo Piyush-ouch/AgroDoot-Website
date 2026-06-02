@@ -71,7 +71,35 @@ function App() {
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slideKey, setSlideKey] = useState(0);
+  const [selectedSolution, setSelectedSolution] = useState<number | null>(null);
   const t = translations[lang];
+
+  const solutions = [
+    {
+      title: t.solCard1Title || "Smart Irrigation",
+      desc: t.solCard1Desc || "Automate your watering schedules based on real-time soil moisture and weather data.",
+      detail: t.solCard1Detail || "Farmers will get alerted whenever there is a need for irrigation and can visualize their entire farm in real-time through our app at a very low cost.",
+      icon: Droplets,
+      img: smartIrrigationImg,
+      color: "text-blue-400"
+    },
+    {
+      title: t.solCard2Title || "Pest Prediction",
+      desc: t.solCard2Desc || "Identify early signs of pest infestations and diseases using AI and localized heatmaps.",
+      detail: t.solCard2Detail || "Farmers will receive predictive heatmaps of potential diseases or pest outbreaks 15-20 days in advance. This subscription-based service ensures healthy crops, prevents crop damage, and reduces treatment costs.",
+      icon: Bug,
+      img: pestHeatmapImg,
+      color: "text-red-400"
+    },
+    {
+      title: t.solCard3Title || "Multi-Crop Automation",
+      desc: t.solCard3Desc || "Manage diverse crop zones seamlessly from a single dashboard with tailored automation.",
+      detail: t.solCard3Detail || "Farmers can grow multiple crops in a single field with tailored zone-wise automation, optimizing resource usage to maximize productivity and overall profit.",
+      icon: LayoutGrid,
+      img: multiCropImg,
+      color: "text-[#4ade80]"
+    }
+  ];
 
   const [activeAchievement, setActiveAchievement] = useState<'indradhanu' | 'eyantra'>('indradhanu');
   const [activeImg, setActiveImg] = useState(0);
@@ -488,37 +516,15 @@ function App() {
           <div className="max-w-[1400px] mx-auto px-6">
             <FadeIn>
               <div className="text-center mb-20">
-                <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">Our Solutions</h2>
+                <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">{t.solTitle || "Our Solutions"}</h2>
                 <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto">
-                  Comprehensive, AI-powered tools designed to revolutionize your farming experience.
+                  {t.solSub || "Comprehensive, AI-powered tools designed to revolutionize your farming experience."}
                 </p>
               </div>
             </FadeIn>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-              {[
-                { 
-                  title: "Smart Irrigation", 
-                  desc: "Automate your watering schedules based on real-time soil moisture and weather data.",
-                  icon: Droplets,
-                  img: smartIrrigationImg,
-                  color: "text-blue-400"
-                },
-                { 
-                  title: "Pest Prediction", 
-                  desc: "Identify early signs of pest infestations and diseases using AI and localized heatmaps.",
-                  icon: Bug,
-                  img: pestHeatmapImg,
-                  color: "text-red-400"
-                },
-                { 
-                  title: "Multi-Crop Automation", 
-                  desc: "Manage diverse crop zones seamlessly from a single dashboard with tailored automation.",
-                  icon: LayoutGrid,
-                  img: multiCropImg,
-                  color: "text-[#4ade80]"
-                }
-              ].map((sol, idx) => (
+              {solutions.map((sol, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, y: 50 }}
@@ -526,6 +532,7 @@ function App() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7, delay: idx * 0.2, ease: "easeOut" }}
                   whileHover={{ y: -15 }}
+                  onClick={() => setSelectedSolution(idx)}
                   className="group relative rounded-[2.5rem] overflow-hidden border border-[#22c55e]/20 bg-[#063016] shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_50px_rgba(34,197,94,0.15)] cursor-pointer transition-all duration-300"
                 >
                   <div className="h-[250px] overflow-hidden relative">
@@ -539,7 +546,7 @@ function App() {
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{sol.title}</h3>
                     <p className="text-white/70 leading-relaxed mb-8 text-lg">{sol.desc}</p>
                     <div className="flex items-center text-[#4ade80] font-bold group-hover:gap-6 gap-2 transition-all duration-300">
-                      Learn More <ArrowRight className="w-6 h-6" />
+                      {t.learnMore || "Learn More"} <ArrowRight className="w-6 h-6" />
                     </div>
                   </div>
                 </motion.div>
@@ -1067,6 +1074,94 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Solution Detail Modal */}
+      <AnimatePresence>
+        {selectedSolution !== null && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedSolution(null)}
+              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+            />
+            
+            {/* Modal Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 30 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative w-full max-w-2xl bg-gradient-to-br from-[#063016] to-[#021808] border border-[#22c55e]/30 rounded-[2.5rem] p-8 md:p-10 shadow-2xl overflow-hidden z-10"
+            >
+              {/* Glow effects inside modal */}
+              <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-[#22c55e]/15 blur-[80px] rounded-full pointer-events-none" />
+              
+              {/* Close Button top right */}
+              <button 
+                onClick={() => setSelectedSolution(null)}
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-[#22c55e]/50 flex items-center justify-center text-white/80 hover:text-white transition-all hover:scale-110 shadow-lg outline-none z-20"
+                aria-label="Close modal"
+              >
+                <span className="text-sm font-bold">✕</span>
+              </button>
+
+              {/* Modal Header */}
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-[#042010] border border-[#22c55e]/30 flex items-center justify-center shadow-lg">
+                  {React.createElement(solutions[selectedSolution].icon, {
+                    className: `w-8 h-8 ${solutions[selectedSolution].color}`
+                  })}
+                </div>
+                <div>
+                  <span className="text-xs font-bold text-[#4ade80] uppercase tracking-wider block mb-1">Our Solution</span>
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-white">
+                    {solutions[selectedSolution].title}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Card image inside Modal */}
+              <div className="w-full h-[220px] rounded-2xl overflow-hidden border border-white/10 mb-6 shadow-inner relative">
+                <img 
+                  src={solutions[selectedSolution].img} 
+                  alt={solutions[selectedSolution].title} 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#021808]/75 via-transparent to-transparent" />
+              </div>
+
+              {/* Modal Body / Description */}
+              <div className="space-y-4">
+                <p className="text-white/70 text-base md:text-lg leading-relaxed font-medium">
+                  {solutions[selectedSolution].desc}
+                </p>
+                <div className="h-px bg-white/10 my-4" />
+                <div className="bg-[#042010]/80 border border-[#22c55e]/20 rounded-2xl p-6 shadow-inner">
+                  <h4 className="text-[#4ade80] font-bold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4" /> Why Choose This?
+                  </h4>
+                  <p className="text-white/90 text-sm md:text-base leading-relaxed">
+                    {solutions[selectedSolution].detail}
+                  </p>
+                </div>
+              </div>
+
+              {/* Close Action Button */}
+              <div className="mt-8 flex justify-end">
+                <button
+                  onClick={() => setSelectedSolution(null)}
+                  className="bg-[#22c55e] hover:bg-[#16a34a] text-[#021808] px-8 py-3 rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(34,197,94,0.2)] hover:scale-[1.02] outline-none"
+                >
+                  {t.solCloseBtn || "Close"}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
