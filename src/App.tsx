@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Droplets, MessageSquare, Users, ArrowRight, ChevronDown, Zap, Activity, TrendingDown, CheckCircle2, LayoutGrid, Sprout, Smartphone, Settings, Bug, Facebook, Instagram, Youtube, Linkedin, Phone, Leaf, Trophy, Award, Calendar, MapPin } from 'lucide-react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
+import { track } from '@vercel/analytics';
 import { useInView } from 'react-intersection-observer';
 import pestHeatmapImg from './assets/pest_heatmap.png';
 
@@ -179,6 +181,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#021808] via-[#052912] to-[#021307] text-white font-sans overflow-hidden">
+      <Analytics />
       
       {/* Dynamic Background Glows */}
       <div className="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#10b981]/20 blur-[120px] rounded-full pointer-events-none" />
@@ -223,6 +226,7 @@ function App() {
                       <button
                         key={l.code}
                         onClick={() => {
+                          track('language_change', { from: lang, to: l.code });
                           setLang(l.code as Language);
                           setIsLangOpen(false);
                         }}
@@ -311,6 +315,7 @@ function App() {
                     href="https://wa.me/918010764435?text=Hello%20AgroDoot!%20I%20have%20an%20enquiry." 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    onClick={() => track('whatsapp_enquiry', { source: 'hero_button', language: lang })}
                     className="bg-[#22c55e] hover:bg-[#16a34a] text-[#021808] px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 shadow-[0_0_30px_rgba(34,197,94,0.3)] hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] hover:-translate-y-1"
                   >
                     {t.heroCta1} <Phone className="w-4 h-4" />
@@ -532,7 +537,10 @@ function App() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7, delay: idx * 0.2, ease: "easeOut" }}
                   whileHover={{ y: -15 }}
-                  onClick={() => setSelectedSolution(idx)}
+                  onClick={() => {
+                    setSelectedSolution(idx);
+                    track('view_solution', { title: sol.title, language: lang });
+                  }}
                   className="group relative rounded-[2.5rem] overflow-hidden border border-[#22c55e]/20 bg-[#063016] shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_50px_rgba(34,197,94,0.15)] cursor-pointer transition-all duration-300"
                 >
                   <div className="h-[250px] overflow-hidden relative">
@@ -986,7 +994,10 @@ function App() {
                     placeholder={t.emailPlaceholder} 
                     className="flex-1 bg-transparent px-6 py-3 sm:py-0 min-w-0 outline-none text-white placeholder-white/50 text-center sm:text-left"
                   />
-                  <button className="bg-[#22c55e] text-[#021808] px-8 py-4 rounded-full font-bold hover:bg-[#16a34a] transition-colors w-full sm:w-auto shrink-0">
+                  <button 
+                    onClick={() => track('newsletter_subscribe', { language: lang })}
+                    className="bg-[#22c55e] text-[#021808] px-8 py-4 rounded-full font-bold hover:bg-[#16a34a] transition-colors w-full sm:w-auto shrink-0"
+                  >
                     {t.subscribe}
                   </button>
                 </div>
